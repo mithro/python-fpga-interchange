@@ -23,18 +23,21 @@ from fpga_interchange.constraints.tool import make_problem_from_device, \
 from example_netlist import example_physical_netlist, example_logical_netlist
 
 
+__dir__ = os.path.abspath(os.path.dirname(__file__))
+
+
 class TestConstraintsRoundTrip(unittest.TestCase):
     def test_parse_series7_constraints(self):
         schema = get_schema(os.environ['INTERCHANGE_SCHEMA_PATH'], 'device',
                             'Device.Constraints')
-        path = os.path.join('test_data', 'series7_constraints.yaml')
+        path = os.path.join(__dir__, 'data', 'series7_constraints.yaml')
         with open(path, 'rb') as f:
             _ = read_format(schema, 'yaml', f)
 
     def test_parse_ecp5_constraints(self):
         schema = get_schema(os.environ['INTERCHANGE_SCHEMA_PATH'], 'device',
                             'Device.Constraints')
-        path = os.path.join('test_data', 'ecp5_constraints.yaml')
+        path = os.path.join(__dir__, 'data', 'ecp5_constraints.yaml')
         with open(path, 'rb') as f:
             _ = read_format(schema, 'yaml', f)
 
@@ -51,7 +54,7 @@ class TestConstraintsRoundTrip(unittest.TestCase):
 
         dev_message = dev_message.as_builder()
 
-        path = os.path.join('test_data', 'series7_constraints.yaml')
+        path = os.path.join(__dir__, 'data', 'series7_constraints.yaml')
         with open(path, 'rb') as f:
             patch_capnp(dev_message, ['constraints'], 'yaml', f)
 
@@ -79,7 +82,7 @@ class TestConstraintsRoundTrip(unittest.TestCase):
 
         dev_message = dev_message.as_builder()
 
-        path = os.path.join('test_data', 'series7_constraints.yaml')
+        path = os.path.join(__dir__, 'data', 'series7_constraints.yaml')
         with open(path, 'rb') as f:
             patch_capnp(dev_message, ['constraints'], 'yaml', f)
 

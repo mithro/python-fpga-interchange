@@ -20,6 +20,9 @@ from fpga_interchange.constraints.model import Constraints, CellInstance, Placem
 from fpga_interchange.constraints.placement_oracle import PlacementOracle
 
 
+__dir__ = os.path.abspath(os.path.dirname(__file__))
+
+
 def create_bram_tile(grid_x, grid_y, bram18_x0, bram18_y0, bram36_x0,
                      bram36_y0):
     """ Create a BRAM_L/R like tile, with 2 RAMB18E1 sites and 1 RAMB36E1 site. """
@@ -70,7 +73,7 @@ class TestBramConstraints(unittest.TestCase):
     def setUp(self):
         schema = get_schema(os.environ['INTERCHANGE_SCHEMA_PATH'], 'device',
                             'Device.Constraints')
-        path = os.path.join('test_data', 'series7_constraints.yaml')
+        path = os.path.join(__dir__, 'data', 'series7_constraints.yaml')
         with open(path, 'rb') as f:
             constraints = read_format(schema, 'yaml', f)
 

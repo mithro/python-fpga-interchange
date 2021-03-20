@@ -20,8 +20,8 @@ env:
 format: ${PYTHON_SRCS}
 	$(IN_ENV) yapf -i ${PYTHON_SRCS}
 
-test-py:
-	$(IN_ENV) pytest -s --doctest-modules
+test:
+	$(IN_ENV) pytest -v
 
 clean:
 	rm -rf env
