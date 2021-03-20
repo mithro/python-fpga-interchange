@@ -13,6 +13,19 @@
 import setuptools
 
 
+# Generate the version number
+def get_version():
+    def clean_scheme(version):
+        from setuptools_scm.version import get_local_node_and_date
+        return get_local_node_and_date(version) if version.dirty else ''
+
+    return {
+        'write_to': 'fpga_interchange/version.py',
+        'version_scheme': 'post-release',
+        'local_scheme': clean_scheme,
+    }
+
+
 # Read in the module description from the README.md file.
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -34,7 +47,7 @@ with open('requirements.txt') as fh:
 setuptools.setup(
     # Package human readable information
     name="fpga-interchange",
-    version="0.0.2",
+    use_scm_version=get_version(),
     author="SymbiFlow Authors",
     author_email="symbiflow@lists.librecores.org",
     description="Python library for reading and writing FPGA interchange files",

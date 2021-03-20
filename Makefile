@@ -26,4 +26,7 @@ test:
 clean:
 	rm -rf env
 
-.PHONY: clean env build test-py
+version:
+	$(IN_ENV) python setup.py --version
+
+.PHONY: clean env build test-py version
