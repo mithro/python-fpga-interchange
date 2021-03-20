@@ -1,9 +1,13 @@
+# Install setup_requires
+setuptools>=42
+setuptools_scm
+wheel
+# Testing tools
 pytest
-psutil
-git+https://github.com/capnproto/pycapnp.git
-ninja
-pyyaml
 yapf==0.24.0
+# Specific versions
+git+https://github.com/capnproto/pycapnp.git#egg=pycapnp
 # TODO: https://github.com/SymbiFlow/python-fpga-interchange/issues/11
 git+https://github.com/litghost/rapidyaml.git@fixup_python_packaging#egg=rapidyaml&subdirectory=api/python
+# Install local package
 -e .
