@@ -70,6 +70,7 @@ setuptools.setup(
         "pycapnp",
         "python-sat",
         "pyyaml",
-        "rapidyaml",
+        # TODO: https://github.com/SymbiFlow/python-fpga-interchange/issues/11
+        "git+https://github.com/litghost/rapidyaml.git@fixup_python_packaging#egg=rapidyaml&subdirectory=api/python",
     ],
 )
